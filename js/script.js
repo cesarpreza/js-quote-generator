@@ -1,15 +1,7 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
-
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-/*** 
- * `quotes` array 
-***/
+/*
+  array containing the quotes objects with quote, source
+  also citation and year if available. 
+*/
 let quotes = [
   {
     quote: 'The way to get started is to quit talking and begin doing.',
@@ -38,25 +30,22 @@ let quotes = [
 
 ]
 
-/***
- * `getRandomQuote` function
-***/
 /*
 1. Function will generate a random number from 1 to 5
-2. the random number gets assigned to an inded in the quotes array
-3. returned from the function is a random index from the quotes array.
+2. the random number gets assigned to an object in the quotes array
+3. returned from the function is a random object from the quotes array.
 */
 let getRandomQuote = () => {
   let getRandomNumber = Math.floor(Math.random() * quotes.length);
   let getRandomQuote = quotes[getRandomNumber];
   return getRandomQuote;
-}
-//getRandomQuote();
+};
 
 
-/***
- * `printQuote` function
-***/
+/* PrintQuote()  recieves the random quote returned from getRandomQuote()
+    randomQuote variable accesses the entire random quote object from getRandomQuote()
+    create a string using the value from the quote key and the source key
+*/
 function printQuote() {
   let randomQuote = getRandomQuote();
   let html = `
@@ -64,6 +53,12 @@ function printQuote() {
   <p class="source"> ${randomQuote.source} 
   `//</p>;
 
+  /*
+    checks to see if the object contains either a citation key or a year key
+    if citation key is true, the value gets concatenated to the html variable inside the <p> tag
+    if year key is true, the value gets concatenated to the html variable also inside the <p> tag
+  */
+  
   if (randomQuote.citation) {
     html += ` <span>${randomQuote.citation}</span> `
   };
@@ -72,15 +67,14 @@ function printQuote() {
     html += ` <span>${randomQuote.year}</span> `
   }
 
+  html += '</p>'
+
+  //html variable gets concatenated to the <p> tags with classes .quote and .source
   document.querySelector('.quote, .source').innerHTML = html;
   console.log(randomQuote);
 }
+
+//Calls print quote function
 printQuote();
-
-
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
