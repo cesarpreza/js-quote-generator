@@ -53,6 +53,8 @@ function printQuote() {
   <p class="source"> ${randomQuote.source} 
   `//</p>;
 
+  //let randomColor =  ;
+
   /*
     checks to see if the object contains either a citation key or a year key
     if citation key is true, the value gets concatenated to the html variable inside the <p> tag
@@ -71,10 +73,26 @@ function printQuote() {
 
   //html variable gets concatenated to the <p> tags with classes .quote and .source
   document.querySelector('.quote, .source').innerHTML = html;
-  console.log(randomQuote);
 }
 
-//Calls print quote function
+
+/*
+function to load a new quote every 3 seconds
+If the button is clicked clearInterval is called and a new interval of 3 seconds is set
+if the button is not clicked the interval runs as normal
+*/
+
+
+let timerId = setInterval(() => {
+  console.log('hi')
+  //printQuote();
+}, 3000);
+
 printQuote();
+//loadNewQuote();
+
+document.querySelector('button').addEventListener('click', () => {
+  clearInterval(timerId);
+});
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
