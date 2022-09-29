@@ -14,7 +14,6 @@ let quotes = [
   {
     quote: 'The way to get started is to quit talking and begin doing.',
     source: 'Walt Disney',
-    citation: 'unknown',
     year: 1957
   },
   {
@@ -25,21 +24,16 @@ let quotes = [
   },
   {
     quote: 'May you always remember to enjoy the road, especially when it\'\s a hard one.',
-    source: 'Kobe Bryant',
-    citation: 'unknown',
-    year: 'unknown'
+    source: 'Kobe Bryant'
   },
   {
     quote: 'You miss 100% of the shots you never take',
     source: 'Wayne Gretzky',
-    citation: 'unknown',
     year: 1983
   },
   {
     quote: 'Knowing yourself is the beginning of all wisdom.',
-    source: 'Aristotle',
-    citation: 'unknown',
-    year: 'unknown'
+    source: 'Aristotle'
   },
 
 ]
@@ -50,7 +44,7 @@ let quotes = [
 /*
 1. Function will generate a random number from 1 to 5
 2. the random number gets assigned to an inded in the quotes array
-3. returned from the function is a random index from the wuotes array.
+3. returned from the function is a random index from the quotes array.
 */
 let getRandomQuote = () => {
   let getRandomNumber = Math.floor(Math.random() * quotes.length);
@@ -66,9 +60,17 @@ let getRandomQuote = () => {
 function printQuote() {
   let randomQuote = getRandomQuote();
   let html = `
-  <p> A random quote </p>
-  <p class="source"> quote source </p>
-  `;
+  <p> ${randomQuote.quote} </p>
+  <p class="source"> ${randomQuote.source} 
+  `//</p>;
+
+  if (randomQuote.citation) {
+    html += ` <span>${randomQuote.citation}</span> `
+  };
+
+  if (randomQuote.year) {
+    html += ` <span>${randomQuote.year}</span> `
+  }
 
   document.querySelector('.quote, .source').innerHTML = html;
   console.log(randomQuote);
