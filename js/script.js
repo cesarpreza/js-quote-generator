@@ -12,31 +12,31 @@ project 1 - A Random Quote Generator
 ***/
 let quotes = [
   {
-    quote: '"The way to get started is to quit talking and begin doing."',
+    quote: 'The way to get started is to quit talking and begin doing.',
     source: 'Walt Disney',
     citation: 'unknown',
     year: 1957
   },
   {
-    quote: '"With great power comes great responsibility"',
+    quote: 'With great power comes great responsibility',
     source: 'Uncle Ben',
     citation: 'Amazing Fantasy #15',
     year: 1962
   },
   {
-    quote: '"May you always remember to enjoy the road, especially when it\'\s a hard one."',
+    quote: 'May you always remember to enjoy the road, especially when it\'\s a hard one.',
     source: 'Kobe Bryant',
     citation: 'unknown',
     year: 'unknown'
   },
   {
-    quote: '"You miss 100% of the shots you never take"',
+    quote: 'You miss 100% of the shots you never take',
     source: 'Wayne Gretzky',
     citation: 'unknown',
     year: 1983
   },
   {
-    quote: '"Knowing yourself is the beginning of all wisdom."',
+    quote: 'Knowing yourself is the beginning of all wisdom.',
     source: 'Aristotle',
     citation: 'unknown',
     year: 'unknown'
@@ -53,22 +53,27 @@ let quotes = [
 3. returned from the function is a random index from the wuotes array.
 */
 let getRandomQuote = () => {
-  let randomNumber = Math.floor(Math.random() * quotes.length);
-  let randomQuote = quotes[randomNumber];
-  console.log(randomQuote);
-  return randomQuote;
+  let getRandomNumber = Math.floor(Math.random() * quotes.length);
+  let getRandomQuote = quotes[getRandomNumber];
+  return getRandomQuote;
 }
-getRandomQuote();
+//getRandomQuote();
 
 
 /***
  * `printQuote` function
 ***/
 function printQuote() {
-  
+  let randomQuote = getRandomQuote();
+  let html = `
+  <p> A random quote </p>
+  <p class="source"> quote source </p>
+  `;
 
+  document.querySelector('.quote, .source').innerHTML = html;
+  console.log(randomQuote);
 }
-
+printQuote();
 
 
 /***
