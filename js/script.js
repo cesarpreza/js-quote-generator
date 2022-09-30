@@ -2,6 +2,7 @@
   array containing the quotes objects with quote, source
   also citation and year if available. 
 */
+let backGroundColors = ['red', 'blue', 'purple', 'grey', 'green'];
 let quotes = [
   {
     quote: 'The way to get started is to quit talking and begin doing.',
@@ -51,9 +52,7 @@ function printQuote() {
   let html = `
   <p> ${randomQuote.quote} </p>
   <p class="source"> ${randomQuote.source} 
-  `//</p>;
-
-  //let randomColor =  ;
+  `
 
   /*
     checks to see if the object contains either a citation key or a year key
@@ -75,21 +74,27 @@ function printQuote() {
   document.querySelector('.quote, .source').innerHTML = html;
 }
 
+function changesBackgroundColor() {
+  let randomNumber = Math.floor(Math.random() * backGroundColors.length);
+  let randomColor = backGroundColors[randomNumber];
+
+  document.querySelector('body').style.backgroundColor = randomColor;
+  console.log(randomColor) ;
+
+};
+changesBackgroundColor();
+
 
 /*
 function to load a new quote every 3 seconds
 If the button is clicked clearInterval is called and a new interval of 3 seconds is set
 if the button is not clicked the interval runs as normal
 */
-
-
 let timerId = setInterval(() => {
   console.log('hi')
   printQuote();
 }, 3000);
 
-printQuote();
-//loadNewQuote();
 
 document.querySelector('button').addEventListener('click', () => {
   clearInterval(timerId);
@@ -100,3 +105,5 @@ document.querySelector('button').addEventListener('click', () => {
 });
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", changesBackgroundColor, false);
+printQuote();
