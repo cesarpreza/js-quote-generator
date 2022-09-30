@@ -7,7 +7,8 @@ let quotes = [
   {
     quote: 'The way to get started is to quit talking and begin doing.',
     source: 'Walt Disney',
-    year: 1957
+    year: 1957,
+    tag: 'motivational'
   },
   {
     quote: 'With great power comes great responsibility',
@@ -61,11 +62,15 @@ function printQuote() {
   */
   
   if (randomQuote.citation) {
-    html += ` <span>${randomQuote.citation}</span> `
+    html += `<span>${randomQuote.citation}</span>`
   };
 
   if (randomQuote.year) {
-    html += ` <span>${randomQuote.year}</span> `
+    html += `<span>${randomQuote.year}</span>`
+  }
+
+  if (randomQuote.tag) {
+    html += ` <span>${randomQuote.tag}</span>`
   }
 
   html += '</p>'
@@ -93,6 +98,7 @@ if the button is not clicked the interval runs as normal
 let timerId = setInterval(() => {
   console.log('hi')
   printQuote();
+  changesBackgroundColor();
 }, 3000);
 
 
@@ -101,6 +107,7 @@ document.querySelector('button').addEventListener('click', () => {
   timerId = setInterval(() => {
     console.log('hi');
     printQuote();
+    changesBackgroundColor();
   }, 3000);
 });
 
