@@ -84,7 +84,6 @@ function changesBackgroundColor() {
   let randomColor = backGroundColors[randomNumber];
 
   document.querySelector('body').style.backgroundColor = randomColor;
-  console.log(randomColor) ;
 
 };
 changesBackgroundColor();
@@ -96,7 +95,6 @@ If the button is clicked clearInterval is called and a new interval of 3 seconds
 if the button is not clicked the interval runs as normal
 */
 let timerId = setInterval(() => {
-  console.log('hi')
   printQuote();
   changesBackgroundColor();
 }, 3000);
