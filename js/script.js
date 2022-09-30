@@ -85,7 +85,7 @@ if the button is not clicked the interval runs as normal
 
 let timerId = setInterval(() => {
   console.log('hi')
-  //printQuote();
+  printQuote();
 }, 3000);
 
 printQuote();
@@ -93,6 +93,10 @@ printQuote();
 
 document.querySelector('button').addEventListener('click', () => {
   clearInterval(timerId);
+  timerId = setInterval(() => {
+    console.log('hi');
+    printQuote();
+  }, 3000);
 });
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
